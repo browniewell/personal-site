@@ -1,0 +1,56 @@
+---
+import Base from '../layouts/Base.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { site, links } from '../config';
+import { getPosts, getProjects, formatDate } from '../lib/content';
+import { frontmatter as nowPage } from './now.md';
+
+const now: { label: string; value: string }[] = nowPage.now ?? [];
+
+const featured = (await getProjects()).filter((p) => p.data.featured).slice(0, 4);
+const recent = (await getPosts()).slice(0, 3);
+---
+<Base>
+  <div class="page-head">
+    <p class="prompt">$ whoami</p>
+    <h1>{site.greeting}</h1>
+    <p class="lede">{site.tagline}</p>
+  </div>
+  <p class="prose">{site.intro}</p>
+  <ul class="buttons">
+    {links.resume && <li><a class="btn primary" href={links.resume}>Résumé <span aria-hidden="true">↓</span></a></li>}
+    {links.linkedin && <li><a class="btn" href={links.linkedin}>LinkedIn</a></li>}
+    {links.github && <li><a class="btn" href={links.github}>GitHub</a></li>}
+  </ul>
+
+  {featured.length > 0 && (
+    <section aria-labelledby="h-projects">
+      <h2 id="h-projects" class="label">// projects</h2>
+      <div class="grid">
+        {featured.map((p) => <ProjectCard project={p.data} showLearned={false} />)}
+      </div>
+      <p><a href="/projects/">All projects →</a></p>
+    </section>
+  )}
+
+  {recent.length > 0 && (
+    <section aria-labelledby="h-writing">
+      <h2 id="h-writing" class="label">// writing</h2>
+      <ul class="posts">
+        {recent.map((p) => (
+          <li><time datetime={p.data.date.toISOString()}>{formatDate(p.data.date)}</time><a href={`/writing/${p.id}/`}>{p.data.title}</a></li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <section aria-labelledby="h-now">
+    <h2 id="h-now" class="label">// now.md</h2>
+    <div class="readme">
+      <dl>
+        {now.map((n) => (<><dt>{n.label}</dt><dd>{n.value}</dd></>))}
+      </dl>
+    </div>
+    <p><a href="/now/">More on what I'm up to →</a></p>
+  </section>
+</Base>

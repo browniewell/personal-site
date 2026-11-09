@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import { getWork } from '../lib/content';
+import { links } from '../config';
+
+const roles = await getWork();
+---
+<Base title="Work" description="Career highlights and résumé.">
+  <div class="page-head">
+    <p class="prompt">$ git log --oneline career</p>
+    <h1>Work</h1>
+    <p>The highlights. The full story is in the résumé.</p>
+    {links.resume && (
+      <ul class="buttons"><li><a class="btn primary" href={links.resume}>Download résumé (PDF) <span aria-hidden="true">↓</span></a></li></ul>
+    )}
+  </div>
+  <div>
+    {roles.map((r) => (
+      <article class="role">
+        <h2>{r.data.title}</h2>
+        <p class="where">{r.data.company} · <span class="mono">{r.data.dates}</span></p>
+        {r.data.highlights.length > 0 && <ul>{r.data.highlights.map((h) => <li>{h}</li>)}</ul>}
+      </article>
+    ))}
+  </div>
+</Base>

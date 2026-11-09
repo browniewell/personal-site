@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Page not found">
+  <div class="page-head">
+    <p class="prompt">$ curl -I {Astro.url.pathname}</p>
+    <h1>404: test case not found</h1>
+    <p>I'd normally file a bug for this. Here's the report anyway.</p>
+  </div>
+  <div class="readme">
+    <dl>
+      <dt>Steps</dt><dd>1. Follow a link. 2. Arrive here.</dd>
+      <dt>Expected</dt><dd>A page.</dd>
+      <dt>Actual</dt><dd>This page.</dd>
+      <dt>Severity</dt><dd>Low. Nobody was harmed.</dd>
+      <dt>Workaround</dt><dd><a href="/">Go home</a> and try again</dd>
+    </dl>
+  </div>
+</Base>

@@ -1,0 +1,50 @@
+# One entry per project. Order here = order on the site.
+#
+#   id:        short unique slug (no spaces)
+#   name:      project name
+#   summary:   one or two sentences
+#   learned:   what you learned (optional)
+#   built:     how it was built, shown as a tag (optional), e.g. "by hand", "with AI"
+#   featured:  true = also shown on the home page
+#   hidden:    true = keep it off the site for now
+#   links:     list of { label, url }. Leave empty if there's nothing public yet.
+#
+# All text below is placeholder. Rewrite freely.
+
+- id: workout-tracker
+  name: Workout consistency tracker
+  summary: A small app that rewards showing up, not personal records.
+  learned: Building it by hand reminded me that boring tech is a feature.
+  built: by hand
+  featured: true
+  links: []
+
+- id: job-search-tracker
+  name: Job search tracker
+  summary: Applications, follow-ups, and notes in one calm place.
+  learned: When AI writes the code, reviewing it becomes the real work.
+  built: with AI
+  featured: true
+  links: []
+
+- id: lute-box
+  name: Lute Box
+  summary: Placeholder. One or two sentences on what Lute Box does.
+  learned: Placeholder. What reviewing AI-written code taught you.
+  built: AI-written, hand-reviewed
+  featured: true
+  links: []
+
+- id: lab-results-api
+  name: Lab results API
+  summary: Placeholder. One or two sentences on what the API does.
+  learned: Placeholder. What you learned.
+  built: TBD
+  links: []
+
+- id: school-walk-weather
+  name: School walk weather check
+  summary: Placeholder. A quick answer to "do we need jackets for the walk to school?"
+  learned: Placeholder. What you learned.
+  built: TBD
+  links: []

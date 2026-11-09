@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+
+# Private planning notes: keep local, never publish
+personal-website-handoff.md
+domain-options.md
+mockups/

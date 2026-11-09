@@ -1,0 +1,28 @@
+# Career highlights, most recent first.
+# Keep `dates` vague where you want to (e.g. "2021 to recently").
+#
+# All text below is placeholder. Rewrite freely.
+
+- id: role-1
+  title: Engineering Manager
+  company: Company name
+  dates: 20XX to recently
+  highlights:
+    - Placeholder. Grew and led a team of N engineers across X and Y.
+    - Placeholder. An outcome you're proud of, with a number if you have one.
+    - Placeholder. Something about trust, hiring, or how the team worked together.
+
+- id: role-2
+  title: QA / Test Automation Lead
+  company: Company name
+  dates: 20XX to 20XX
+  highlights:
+    - Placeholder. Built or rebuilt the test automation approach.
+    - Placeholder. Impact on release confidence or speed.
+
+- id: role-3
+  title: QA Engineer
+  company: Company name
+  dates: 20XX to 20XX
+  highlights:
+    - Placeholder. Where it started.

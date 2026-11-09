@@ -1,0 +1,28 @@
+---
+interface Props {
+  project: {
+    name: string;
+    summary: string;
+    learned?: string;
+    built?: string;
+    links: { label: string; url: string }[];
+  };
+  showLearned?: boolean;
+}
+const { project, showLearned = true } = Astro.props;
+const main = project.links[0];
+---
+<article class="card">
+  <h3>{main ? <a href={main.url}>{project.name}</a> : project.name}</h3>
+  <p>{project.summary}</p>
+  {showLearned && project.learned && <p class="learned"><span class="visually-hidden">What I learned: </span>{project.learned}</p>}
+  {(project.built || project.links.length > 0) && (
+    <div class="meta">
+      {project.built && <span class="tag">{project.built}</span>}
+      {project.links.map((l) => <a href={l.url}>{l.label}</a>)}
+    </div>
+  )}
+</article>
+<style>
+  .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+</style>

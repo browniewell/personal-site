@@ -1,0 +1,23 @@
+---
+// Layout for simple markdown pages (About, Now). Set `title` and optional `intro` in the page's frontmatter.
+import Base from './Base.astro';
+const { frontmatter } = Astro.props;
+---
+<Base title={frontmatter.title} description={frontmatter.description}>
+  <div class="page-head">
+    {frontmatter.prompt && <p class="prompt">{frontmatter.prompt}</p>}
+    <h1>{frontmatter.title}</h1>
+    {frontmatter.intro && <p>{frontmatter.intro}</p>}
+  </div>
+  {frontmatter.now && (
+    <div class="readme">
+      <dl>
+        {frontmatter.now.map((n: { label: string; value: string }) => (<><dt>{n.label}</dt><dd>{n.value}</dd></>))}
+      </dl>
+    </div>
+  )}
+  {frontmatter.updated && <p class="prompt" style="margin-top:12px">last updated {frontmatter.updated}</p>}
+  <div class="prose">
+    <slot />
+  </div>
+</Base>
