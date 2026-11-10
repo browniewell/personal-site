@@ -6,13 +6,13 @@ export const site = {
   shortName: 'ryan.brownewell',
   title: 'Ryan Brownewell',
   description:
-    'Engineering manager with a QA heart. Teams, testing, side projects, and the occasional post.',
+    'Engineering manager who leads with empathy and trust. Teams, testing, side projects, and the occasional post.',
   // Home page
   greeting: "Hi, I'm Ryan.",
   tagline:
-    'Engineering manager with a QA heart. I lead with trust, and I still like knowing how things break.',
+    'Engineering manager who leads with empathy and trust, and builds teams people want to stay on.',
   intro:
-    "I've spent fourteen years in software, starting in test automation and moving into leading teams, most recently in regulated digital health. I build teams where people feel safe asking questions early. These days I'm tinkering with small projects and learning in public about building software alongside AI.",
+    "I've spent fourteen years in software, starting in test automation and moving into leading teams, most recently in regulated digital health. I build teams where people feel safe bringing their whole selves to work. These days I'm tinkering with small projects and learning in public about building software alongside AI.",
 };
 
 export const links = {

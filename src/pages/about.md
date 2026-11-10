@@ -11,7 +11,7 @@ I came up through QA. At Kepware (now part of Velotic) I went from manual testin
 
 I lead with empathy and trust, because inclusive, high-trust teams build the best software. I listen more than I speak, make decisions with the people who know their domains best, help with architecture calls, and give people a heads-up before asking them to take on something new. Leadership can come from anywhere, so I look for chances to let others lead. On my last team, that meant cross-training six engineers across stacks so a small group could cover a lot of ground, and setting up a support rotation so production issues always had an owner without derailing everyone's sprint. What I'm proudest of: the team stayed together, and we shipped every release on time.
 
-Curiosity is the thread through all of it. It's why I go after root causes instead of fixing symptoms. When release planning kept topping our retros, I kept reworking it until releases ran smoothly. The QA in me never really left. I still like knowing how things break, and I want the people fixing them to feel supported, not blamed.
+I'm naturally curious, which is why I go after root causes instead of fixing symptoms. When release planning kept topping our retros, I kept reworking it until releases ran smoothly. And when something does break, I want the people fixing it to feel supported, not blamed.
 
 Outside of work, I'm married with one kid. I read a lot, always have music on, play games, and take photos. For eleven years I participated in Extra Life, a gaming marathon for charity, raising over $15,000 for Barbara Bush Children's Hospital and helping lead the Portland chapter.
 
