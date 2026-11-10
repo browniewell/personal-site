@@ -1,0 +1,52 @@
+---
+// A row of images with captions: book covers, posters, album art, logos.
+// Items without an image are shown as simple text tags after the images.
+import { Image } from 'astro:assets';
+import { asset } from '../lib/images';
+
+export interface ShelfItem {
+  title: string;
+  label?: string; // small mono tag above the title, e.g. "reading"
+  note?: string; // muted line under the title, e.g. author or league
+  image?: string; // path under src/assets, e.g. now/new-girl.jpg
+  alt?: string;
+}
+
+interface Props {
+  items: ShelfItem[];
+  height?: number; // image height in px
+  logos?: boolean; // logos get a light backing card and a default "<title> logo" alt
+  eager?: boolean; // load right away (for images near the top of the page)
+}
+
+const { items, height = 200, logos = false, eager = false } = Astro.props;
+const withImage = items.filter((i) => i.image);
+const textOnly = items.filter((i) => !i.image);
+---
+{withImage.length > 0 && (
+  <ul class:list={['shelf', { logos }]} style={`--shelf-h:${height}px`}>
+    {withImage.map((item) => (
+      <li>
+        <figure>
+          <Image
+            src={asset(item.image)!}
+            alt={item.alt ?? (logos ? `${item.title} logo` : `Cover of ${item.title}`)}
+            height={height}
+            densities={[1, 2]}
+            loading={eager ? 'eager' : 'lazy'}
+          />
+          <figcaption>
+            {item.label && <span class="shelf-tag">{item.label}</span>}
+            <span class="title">{item.title}</span>
+            {item.note && <span class="note">{item.note}</span>}
+          </figcaption>
+        </figure>
+      </li>
+    ))}
+  </ul>
+)}
+{textOnly.length > 0 && (
+  <ul class="chips">
+    {textOnly.map((item) => <li>{item.title}{item.note && <span class="note"> · {item.note}</span>}</li>)}
+  </ul>
+)}

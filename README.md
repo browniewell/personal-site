@@ -61,7 +61,9 @@ The order in the file is the order on the site. To hide a project without deleti
 
 ## Update "Now"
 
-Edit the `now:` list and the `updated:` date at the top of `src/pages/now.md`. The same list appears on the home page.
+Edit the `now:` list and the `updated:` date at the top of `src/pages/now.md`. The same list appears on the home page. Favorites are in the `favorites:` list in the same file.
+
+To add a cover or logo, save the image in `src/assets/now/` or `src/assets/favorites/` and set `image: now/that-file.jpg` on the item. Any size works, because the site resizes images when it builds. Leave `image` off and the item shows as a plain text tag.
 
 ## Social links
 

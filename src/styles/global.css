@@ -129,3 +129,24 @@ section { margin-top: 72px; }
 .site-footer ul { display: flex; gap: 6px 16px; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; }
 .site-footer a { color: var(--muted); }
 .site-footer a:hover { color: var(--text); }
+
+/* Shelf: covers, posters, album art, logos (src/components/Shelf.astro) */
+.shelf { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 24px 20px; align-items: flex-start; }
+.shelf figure { margin: 0; width: min-content; }
+.shelf img { display: block; height: var(--shelf-h); width: auto; max-width: none; border-radius: 6px; box-shadow: 0 1px 2px rgb(0 0 0 / 0.12), 0 4px 14px rgb(0 0 0 / 0.08); }
+.shelf figcaption { display: flex; flex-direction: column; gap: 2px; margin-top: 10px; font-size: 15px; line-height: 1.35; }
+.shelf .shelf-tag { font-family: var(--mono); font-size: 13px; color: var(--accent); }
+.shelf .title { font-weight: 600; }
+.shelf .note { color: var(--muted); font-size: 14px; }
+.shelf.logos img { box-sizing: content-box; padding: 12px; background: #fff; border: 1px solid var(--rule); border-radius: 12px; box-shadow: none; object-fit: contain; }
+.shelf.logos figure { min-width: calc(var(--shelf-h) + 26px); }
+.chips { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.chips li { background: var(--code); border-radius: 999px; padding: 4px 14px; font-size: 15px; }
+.chips .note { color: var(--muted); }
+.shelf + .chips { margin-top: 18px; }
+.fav-group { margin-top: 36px; }
+.fav-group h3 { font-family: var(--mono); font-size: 14px; font-weight: 500; color: var(--muted); margin: 0 0 14px; }
+@media (max-width: 520px) {
+  .shelf { gap: 20px 16px; }
+  .shelf img { height: calc(var(--shelf-h) * 0.72); }
+}

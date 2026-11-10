@@ -1,7 +1,12 @@
 ---
 // Layout for simple markdown pages (About, Now). Set `title` and optional `intro` in the page's frontmatter.
+// The Now page also uses `now` and `favorites` (see src/pages/now.md).
 import Base from './Base.astro';
+import Shelf, { type ShelfItem } from '../components/Shelf.astro';
 const { frontmatter } = Astro.props;
+// YAML turns `updated: 2026-11-10` into a full timestamp; show just the date.
+const updated = frontmatter.updated ? new Date(frontmatter.updated).toISOString().slice(0, 10) : undefined;
+const favorites: { group: string; logos?: boolean; items: ShelfItem[] }[] = frontmatter.favorites ?? [];
 ---
 <Base title={frontmatter.title} description={frontmatter.description}>
   <div class="page-head">
@@ -9,14 +14,19 @@ const { frontmatter } = Astro.props;
     <h1>{frontmatter.title}</h1>
     {frontmatter.intro && <p>{frontmatter.intro}</p>}
   </div>
-  {frontmatter.now && (
-    <div class="readme">
-      <dl>
-        {frontmatter.now.map((n: { label: string; value: string }) => (<><dt>{n.label}</dt><dd>{n.value}</dd></>))}
-      </dl>
-    </div>
+  {frontmatter.now && <Shelf items={frontmatter.now} height={200} eager />}
+  {updated && <p class="prompt" style="margin-top:28px">last updated {updated}</p>}
+  {favorites.length > 0 && (
+    <section aria-labelledby="h-favorites">
+      <h2 id="h-favorites">Favorites</h2>
+      {favorites.map((g) => (
+        <div class="fav-group">
+          <h3>{g.group.toLowerCase()}</h3>
+          <Shelf items={g.items} height={g.logos ? 72 : 150} logos={g.logos} />
+        </div>
+      ))}
+    </section>
   )}
-  {frontmatter.updated && <p class="prompt" style="margin-top:12px">last updated {frontmatter.updated}</p>}
   <div class="prose">
     <slot />
   </div>

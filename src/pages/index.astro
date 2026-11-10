@@ -1,11 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import Shelf, { type ShelfItem } from '../components/Shelf.astro';
 import { site, links } from '../config';
 import { getPosts, getProjects, formatDate } from '../lib/content';
 import { frontmatter as nowPage } from './now.md';
 
-const now: { label: string; value: string }[] = nowPage.now ?? [];
+const now: ShelfItem[] = nowPage.now ?? [];
 
 const featured = (await getProjects()).filter((p) => p.data.featured).slice(0, 4);
 const recent = (await getPosts()).slice(0, 3);
@@ -46,11 +47,7 @@ const recent = (await getPosts()).slice(0, 3);
 
   <section aria-labelledby="h-now">
     <h2 id="h-now" class="label">// now.md</h2>
-    <div class="readme">
-      <dl>
-        {now.map((n) => (<><dt>{n.label}</dt><dd>{n.value}</dd></>))}
-      </dl>
-    </div>
+    <Shelf items={now} height={160} />
     <p><a href="/now/">More on what I'm up to →</a></p>
   </section>
 </Base>
