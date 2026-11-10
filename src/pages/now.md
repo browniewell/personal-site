@@ -2,7 +2,7 @@
 layout: ../layouts/Page.astro
 title: Now
 prompt: $ cat now.md
-intro: What I'm into at the moment. Inspired by nownownow.com.
+intro: What I'm into at the moment.
 updated: 2026-11-10
 #
 # HOW TO EDIT
