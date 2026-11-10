@@ -1,28 +1,60 @@
-# Career highlights, most recent first.
-# Keep `dates` vague where you want to (e.g. "2021 to recently").
-#
-# All text below is placeholder. Rewrite freely.
+# Career highlights, most recent first. The order here is the order on the site.
+# The full detail lives in the résumé (public/resume.pdf).
 
-- id: role-1
+- id: medrhythms-em
   title: Engineering Manager
-  company: Company name
-  dates: 20XX to recently
+  company: MedRhythms
+  dates: 2023 to 2026
   highlights:
-    - Placeholder. Grew and led a team of N engineers across X and Y.
-    - Placeholder. An outcome you're proud of, with a number if you have one.
-    - Placeholder. Something about trust, hiring, or how the team worked together.
+    - Led a six-person, cross-stack team (five developers, one QA) building two regulated neurorehabilitation products.
+    - Shipped three mobile releases a year, all on time, with regulatory risk reviews and HITRUST/HIPAA support.
+    - Kept a close team together. One voluntary departure in nearly three years.
+    - Cross-trained engineers across stacks so a small team could cover a lot of ground.
+    - Reworked release planning, the team's top retro pain point, until releases ran smoothly.
+    - Built an OCR patient intake automation (AWS Lambda and Textract, Salesforce Flow) that cut entry time per form from 30 minutes to 5.
 
-- id: role-2
-  title: QA / Test Automation Lead
-  company: Company name
-  dates: 20XX to 20XX
+- id: medrhythms-supervisor
+  title: Engineering Senior Supervisor
+  company: MedRhythms
+  dates: 2022 to 2023
   highlights:
-    - Placeholder. Built or rebuilt the test automation approach.
-    - Placeholder. Impact on release confidence or speed.
+    - Promoted within eight months. Grew from leading one team to two, with three to six engineers.
+    - Served as Scrum Master, owning team process and health, and hired a QA engineer.
 
-- id: role-3
-  title: QA Engineer
-  company: Company name
-  dates: 20XX to 20XX
+- id: medrhythms-qa
+  title: Software Quality Assurance Engineer
+  company: MedRhythms
+  dates: 2021 to 2022
   highlights:
-    - Placeholder. Where it started.
+    - Sole Android tester for a regulated digital therapeutic, owning test plans, cases, and regulatory documentation.
+    - Pushed for patient experience and therapy quality, not just functional correctness.
+
+- id: ptc-qa-manager
+  title: Quality Assurance Manager
+  company: PTC (Kepware)
+  dates: 2021
+  highlights:
+    - Managed five direct reports and three offshore contractors, and led the offshore team in stabilizing 100+ automated tests.
+
+- id: ptc-group-lead
+  title: Quality Assurance Group Lead
+  company: PTC (Kepware)
+  dates: 2018 to 2021
+  highlights:
+    - Half people manager, half individual contributor, with three direct reports.
+    - Cut release regression testing from ten days to five.
+    - Founded and led the Automation Guild, a biweekly forum for test automation practices.
+
+- id: ptc-senior-automation
+  title: Senior Software Automation Engineer
+  company: PTC (Kepware)
+  dates: 2016 to 2018
+  highlights:
+    - Led Scrum teams building automated tests in C#, built shared test infrastructure, and mentored engineers through code review.
+
+- id: kepware-early
+  title: Software Automation Engineer, QA Engineer
+  company: Kepware Technologies
+  dates: 2012 to 2016
+  highlights:
+    - Where it started.

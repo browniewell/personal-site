@@ -41,7 +41,7 @@ const work = defineCollection({
     title: z.string(),
     company: z.string(),
     order: z.number(),
-    dates: z.string(),
+    dates: z.coerce.string(), // a bare year like 2021 is fine
     highlights: z.array(z.string()).default([]),
   }),
 });

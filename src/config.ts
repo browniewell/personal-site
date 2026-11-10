@@ -12,13 +12,13 @@ export const site = {
   tagline:
     'Engineering manager with a QA heart. I lead with trust, and I still like knowing how things break.',
   intro:
-    "I build teams where people feel safe asking questions early. These days I'm tinkering with small projects and learning in public about building software alongside AI.",
+    "I've spent fourteen years in software, starting in test automation and moving into leading teams, most recently in regulated digital health. I build teams where people feel safe asking questions early. These days I'm tinkering with small projects and learning in public about building software alongside AI.",
 };
 
 export const links = {
-  resume: '/resume.pdf', // drop the PDF at public/resume.pdf
+  resume: '/resume.pdf', // the PDF lives at public/resume.pdf
   linkedin: 'https://www.linkedin.com/in/ryan-brownewell/',
-  github: '', // TODO: e.g. https://github.com/your-username
+  github: 'https://github.com/browniewell',
   photography: '', // TODO: photography site, once it's live
   // Add more socials here, then list them in `socials` below.
   bluesky: '',
