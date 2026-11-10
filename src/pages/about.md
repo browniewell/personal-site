@@ -5,9 +5,13 @@ prompt: $ cat README.md
 description: A little about Ryan Brownewell.
 ---
 
-I'm an engineering manager in Cumberland, Maine, just outside Portland. I've spent about fourteen years in software. I started in QA, writing automated tests for industrial software at Kepware, then moved into leading the people who do that work, and eventually whole cross-functional teams. Most recently I managed a team building regulated neurorehabilitation products at MedRhythms.
+I'm an engineering manager in Cumberland, Maine, just outside Portland, with fourteen years in software and more than seven leading people.
 
-That QA background still shapes how I lead. I like knowing how things break, and I want the people fixing them to feel supported, not blamed. I care about calm, predictable releases, retros that actually change something, and teams where someone new feels safe asking the "obvious" question in their first week. The thing I'm proudest of from my last team is simple: people stayed.
+I lead with empathy and trust, because inclusive, high-trust teams build the best software. In practice that means I listen more than I speak. I make decisions with the people who know their domains best, leave architecture calls to senior engineers, and give people a heads-up before asking them to take on something new. Leadership can come from anywhere, so I cross-train engineers across stacks and look for chances to let others lead.
+
+I started in QA, first manual testing and then test automation at Kepware (now part of Velotic), where I cut release regression testing in half without sacrificing quality. Most recently I was an engineering manager at MedRhythms, which I joined to do work that improves patients' lives. What I'm proudest of from there: my team stayed together, and we shipped every release on time.
+
+Curiosity is the thread through all of it. It's why I go after root causes instead of fixing symptoms, and it's how I help teams feel and perform their best. The QA in me never really left. I still like knowing how things break, and I want the people fixing them to feel supported, not blamed.
 
 Outside of work, I'm married with one kid. I read a lot, always have music on, play games, and take photos. For eleven years I played in Extra Life, a gaming marathon for charity, raising over $10,000 for Barbara Bush Children's Hospital and helping lead the Portland chapter.
 
@@ -22,4 +26,4 @@ I also build small side projects, mostly to learn. Lately that includes building
 
 ## Say hi
 
-The best way to reach me is [LinkedIn](https://www.linkedin.com/in/ryan-brownewell/).
+I'm looking for my next engineering leadership role, in any industry where quality and people matter. The best way to reach me is [LinkedIn](https://www.linkedin.com/in/ryan-brownewell/).
