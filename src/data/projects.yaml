@@ -8,43 +8,46 @@
 #   featured:  true = also shown on the home page
 #   hidden:    true = keep it off the site for now
 #   links:     list of { label, url }. Leave empty if there's nothing public yet.
-#
-# All text below is placeholder. Rewrite freely.
+
+- id: lab-results-api
+  name: Vet lab results API
+  summary: A small REST API that takes in veterinary lab results, validates them, matches them to a patient, flags out-of-range values, and returns each patient's history. Node, TypeScript, Express, and Prisma, with all-fake patients.
+  learned: How to design and write a REST API in TypeScript. I'd used plenty of APIs, but never written one.
+  built: by hand
+  featured: true
+  links:
+    - { label: GitHub, url: https://github.com/browniewell/vet-lab-results-api }
 
 - id: workout-tracker
   name: Workout consistency tracker
-  summary: A small app that rewards showing up, not personal records.
-  learned: Building it by hand reminded me that boring tech is a feature.
+  summary: >-
+    A tracker that asks "am I showing up?", not "am I getting stronger?" The one goal is simple: don't miss
+    two days in a row. Still a work in progress.
+  learned: Refining my TypeScript. Still early on.
   built: by hand
   featured: true
-  links: []
-
-- id: job-search-tracker
-  name: Job search tracker
-  summary: Applications, follow-ups, and notes in one calm place.
-  learned: When AI writes the code, reviewing it becomes the real work.
-  built: with AI
-  featured: true
-  links: []
+  links:
+    - { label: GitHub, url: https://github.com/browniewell/workout-tracker }
 
 - id: lute-box
   name: Lute Box
-  summary: Placeholder. One or two sentences on what Lute Box does.
-  learned: Placeholder. What reviewing AI-written code taught you.
+  summary: A one-page loot box game. Click to open a box, get a lute of some rarity, repeat. Very early days.
+  learned: Just how fast AI can generate code.
   built: AI-written, hand-reviewed
   featured: true
-  links: []
+  links:
+    - { label: GitHub, url: https://github.com/browniewell/lute-box }
 
-- id: lab-results-api
-  name: Lab results API
-  summary: Placeholder. One or two sentences on what the API does.
-  learned: Placeholder. What you learned.
-  built: TBD
+# Private for now. Flip `hidden` to false (and add a summary and links) to show them.
+- id: job-search-tracker
+  name: Job search tracker
+  summary: Applications, follow-ups, and notes in one place.
+  built: with AI
+  hidden: true
   links: []
 
 - id: school-walk-weather
   name: School walk weather check
-  summary: Placeholder. A quick answer to "do we need jackets for the walk to school?"
-  learned: Placeholder. What you learned.
-  built: TBD
+  summary: A quick answer to "do we need jackets for the walk to school?"
+  hidden: true
   links: []
