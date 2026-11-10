@@ -12,7 +12,7 @@ export const site = {
   tagline:
     'Engineering manager who leads with empathy and trust, and builds teams people want to stay on.',
   intro:
-    "I've spent fourteen years in software, starting in test automation and moving into leading teams, most recently in regulated digital health. I build teams where people feel safe bringing their whole selves to work. These days I'm tinkering with small projects and learning in public about building software alongside AI.",
+    "I've spent fourteen years in software, starting in test automation and moving into leading teams, most recently in regulated digital health. I build teams where people feel safe bringing their whole selves to work. These days I'm tinkering with small projects and learning about building software alongside AI.",
 };
 
 export const links = {
