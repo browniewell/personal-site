@@ -38,6 +38,14 @@
   links:
     - { label: GitHub, url: https://github.com/browniewell/lute-box }
 
+- id: personal-site
+  name: ryanbrownewell.com
+  summary: This site. A static site built with Astro and hosted on GitHub Pages, with no tracking.
+  learned: How quickly AI can finish a simple project when someone technical is steering. It's a powerful tool, but it still needs careful stewardship.
+  built: with AI
+  links:
+    - { label: GitHub, url: https://github.com/browniewell/personal-site }
+
 # Private for now. Flip `hidden` to false (and add a summary and links) to show them.
 - id: job-search-tracker
   name: Job search tracker
