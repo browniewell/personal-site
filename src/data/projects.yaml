@@ -32,10 +32,11 @@
 - id: lute-box
   name: Lute Box
   summary: A one-page loot box game. Click to open a box, get a lute of some rarity, repeat. Very early days.
-  learned: Just how fast AI can generate code.
+  learned: AI can generate a lot of code very quickly, but human review and testing are still essential.
   built: AI-written, hand-reviewed
   featured: true
   links:
+    - { label: Play, url: https://browniewell.github.io/lute-box/ }
     - { label: GitHub, url: https://github.com/browniewell/lute-box }
 
 - id: personal-site
