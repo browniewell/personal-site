@@ -19,9 +19,9 @@ const recent = (await getPosts()).slice(0, 3);
   </div>
   <p class="prose">{site.intro}</p>
   <ul class="buttons">
-    {links.resume && <li><a class="btn primary" href={links.resume}>Résumé <span aria-hidden="true">↓</span></a></li>}
     {links.linkedin && <li><a class="btn" href={links.linkedin}>LinkedIn</a></li>}
     {links.github && <li><a class="btn" href={links.github}>GitHub</a></li>}
+    {links.resume && <li><a class="btn" href={links.resume}>Résumé <span aria-hidden="true">↓</span></a></li>}
   </ul>
 
   {featured.length > 0 && (
