@@ -1,60 +1,95 @@
 ---
-// This year's books as a stack of spines, newest on top.
-// Thickness follows page count; hardcovers are taller with banded spines.
+// This year's books as a pile, newest on top, with the titles listed beside it.
+// Sizes are true to life: the stack is as wide as a 9.6" book is tall, and each
+// book is as thick as its page count (about 0.002" a page) plus its covers.
 // Data: src/data/reading.yaml
-import { getReading, formatDate } from '../lib/content';
+import { getReading } from '../lib/content';
+// Redacted Script draws any text as unreadable scribbles, so each spine carries
+// the real title's shape without words. Self-hosted, like the other fonts.
+import '@fontsource/redacted-script/latin-400.css';
 
 const { year, books } = await getReading();
 const pages = books.reduce((sum, b) => sum + b.pages, 0);
 
-// Small, stable variations so the stack looks hand-piled, not machine-cut.
+// Small, stable variations so the pile looks hand-stacked, not machine-cut.
 function hash(s: string) {
   let h = 0;
   for (const c of s) h = (h * 31 + c.charCodeAt(0)) | 0;
   return Math.abs(h);
 }
-// Dark or light text, whichever reads better on the spine color.
-function ink(hex: string) {
+// Gold foil on darker covers; a dark, stamped look on the few light ones.
+function foil(hex: string) {
   const [r, g, b] = [1, 3, 5].map((i) => {
     const c = parseInt(hex.slice(i, i + 2), 16) / 255;
     return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
   });
   const lum = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-  return (lum + 0.05) / 0.05 > 1.05 / (lum + 0.05) ? '#1b1a17' : '#fbf7ee';
+  return lum > 0.3 ? '#2b2216' : '#e2c27a';
 }
 const fallback = ['#325057', '#714354', '#386f98', '#40602a', '#aa683a', '#31336d'];
-const typefaces = ['serif', 'caps', 'serif-caps'];
-const marks = ['circle', 'square', 'diamond'];
+
+// Real-world sizes, in inches.
+const PAGE = 0.002;
+const trim = { hardcover: [9.1, 9.5], paperback: [7.9, 8.4], ebook: [7.9, 8.4] }; // spine length
+const covers = { hardcover: 0.2, paperback: 0.04, ebook: 0.04 };
+
+const rows = books.map((b, i) => {
+  const h = hash(b.title);
+  const [lo, hi] = trim[b.format];
+  const color = b.color ?? fallback[i % fallback.length];
+  return {
+    ...b,
+    foil: foil(color),
+    n: books.length - i,
+    color,
+    stripe: Math.floor(h / 7919) % 4 === 0, // a dark band at one end, like a series design
+    length: (lo + ((h % 100) / 100) * (hi - lo)).toFixed(2),
+    thick: (b.pages * PAGE + covers[b.format]).toFixed(3),
+    x: ((h % 13) - 6) / 40, // inches off-center
+    r: ((h % 9) - 4) * 0.12,
+  };
+});
 ---
 <section class="reading" aria-labelledby="h-reading">
   <h2 id="h-reading" class="label">// read in {year}</h2>
   <p class="reading-count"><strong>{books.length}</strong> books <span>· {pages.toLocaleString('en-US')} pages</span></p>
-  <ol class="stack">
-    {books.map((b, i) => {
-      const h = hash(b.title);
-      const color = b.color ?? fallback[i % fallback.length];
-      const hard = b.format === 'hardcover';
-      // Spine length ~ trim size: hardcovers are tallest, paperbacks vary.
-      const width = hard ? 92 + (h % 9) : 76 + (h % 15);
-      const style = [
-        `--c:${color}`,
-        `--ink:${ink(color)}`,
-        `--t:${Math.max(15, Math.round(b.pages / 19))}px`,
-        `--w:${width}%`,
-        `--x:${(h % 13) - 6}px`,
-        `--r:${((h % 9) - 4) * 0.12}deg`,
-      ].join(';');
-      return (
-        <li
-          class:list={['book', b.format, typefaces[h % 3]]}
-          style={style}
-          title={`${b.title}, ${b.author} · ${b.pages} pages · finished ${formatDate(b.finished)}`}
-        >
-          <span class="spine-title">{b.title}</span>
-          <span class="spine-author">{b.author.split(' ').at(-1)}</span>
-          <span class:list={['spine-mark', marks[(h >> 3) % 3]]} aria-hidden="true"></span>
+  <div class="reading-body">
+    <!-- The pile is a picture of the list beside it, so screen readers get the list. -->
+    <div class="stack-scene" aria-hidden="true">
+      <div class="stack">
+        {rows.map((b) => (
+          <div
+            class:list={['book', b.format, { stripe: b.stripe }]}
+            data-n={b.n}
+            style={`--c:${b.color};--foil:${b.foil};--len:${b.length};--thick:${b.thick};--x:${b.x};--r:${b.r}deg`}
+          >
+            <span class="spine-title">{b.title}</span>
+            <span class="spine-author">{b.author.split(' ').at(-1)}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+    <ol class="book-list" aria-label={`Books finished in ${year}, newest first`}>
+      {rows.map((b) => (
+        <li data-n={b.n}>
+          <span class="n" aria-hidden="true">{String(b.n).padStart(2, '0')}</span>
+          <span><span class="t">{b.title}</span> <span class="a">{b.author}</span></span>
         </li>
-      );
-    })}
-  </ol>
+      ))}
+    </ol>
+  </div>
 </section>
+
+<script>
+  // Hovering a title lifts its book out of the pile, and vice versa.
+  const body = document.querySelector<HTMLElement>('.reading-body');
+  if (body) {
+    const pair = (n: string | undefined, on: boolean) =>
+      body.querySelectorAll(`[data-n="${n}"]`).forEach((el) => el.classList.toggle('lit', on));
+    body.querySelectorAll<HTMLElement>('[data-n]').forEach((el) => {
+      el.addEventListener('mouseenter', () => pair(el.dataset.n, true));
+      el.addEventListener('mouseleave', () => pair(el.dataset.n, false));
+    });
+  }
+
+</script>
