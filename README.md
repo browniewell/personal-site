@@ -18,6 +18,7 @@ npm run preview  # serve the production build locally
 | Name, tagline, home intro, social links | `src/config.ts` |
 | About page | `src/pages/about.md` |
 | Now + Favorites | `src/pages/now.md` |
+| Books read this year | `src/data/reading.yaml` |
 | Projects | `src/data/projects.yaml` |
 | Work history | `src/data/work.yaml` |
 | Résumé PDF | save it as `public/resume.pdf` |
@@ -64,6 +65,8 @@ The order in the file is the order on the site. To hide a project without deleti
 Edit the `now:` list and the `updated:` date at the top of `src/pages/now.md`. The same list appears on the home page. Favorites are in the `favorites:` list in the same file.
 
 To add a cover or logo, save the image in `src/assets/now/` or `src/assets/favorites/` and set `image: now/that-file.jpg` on the item. Any size works, because the site resizes images when it builds. Leave `image` off and the item shows as a plain text tag.
+
+When you finish a book, add a line to the bottom of `src/data/reading.yaml` with its title, author, page count and finish date (a spine `color` is optional). The stack on the Now page shows the most recent year in that file.
 
 ## Social links
 

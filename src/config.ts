@@ -8,7 +8,7 @@ export const site = {
   description:
     'Engineering manager who leads with empathy and trust. Teams, testing, side projects, and the occasional post.',
   // Home page
-  greeting: "Hi, I'm Ryan.",
+  greeting: 'Ryan Brownewell',
   tagline:
     'Engineering manager who leads with empathy and trust, and builds teams people want to stay on.',
   intro:

@@ -1,0 +1,60 @@
+---
+// This year's books as a stack of spines, newest on top.
+// Thickness follows page count; hardcovers are taller with banded spines.
+// Data: src/data/reading.yaml
+import { getReading, formatDate } from '../lib/content';
+
+const { year, books } = await getReading();
+const pages = books.reduce((sum, b) => sum + b.pages, 0);
+
+// Small, stable variations so the stack looks hand-piled, not machine-cut.
+function hash(s: string) {
+  let h = 0;
+  for (const c of s) h = (h * 31 + c.charCodeAt(0)) | 0;
+  return Math.abs(h);
+}
+// Dark or light text, whichever reads better on the spine color.
+function ink(hex: string) {
+  const [r, g, b] = [1, 3, 5].map((i) => {
+    const c = parseInt(hex.slice(i, i + 2), 16) / 255;
+    return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  });
+  const lum = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  return (lum + 0.05) / 0.05 > 1.05 / (lum + 0.05) ? '#1b1a17' : '#fbf7ee';
+}
+const fallback = ['#325057', '#714354', '#386f98', '#40602a', '#aa683a', '#31336d'];
+const typefaces = ['serif', 'caps', 'serif-caps'];
+const marks = ['circle', 'square', 'diamond'];
+---
+<section class="reading" aria-labelledby="h-reading">
+  <h2 id="h-reading" class="label">// read in {year}</h2>
+  <p class="reading-count"><strong>{books.length}</strong> books <span>· {pages.toLocaleString('en-US')} pages</span></p>
+  <ol class="stack">
+    {books.map((b, i) => {
+      const h = hash(b.title);
+      const color = b.color ?? fallback[i % fallback.length];
+      const hard = b.format === 'hardcover';
+      // Spine length ~ trim size: hardcovers are tallest, paperbacks vary.
+      const width = hard ? 92 + (h % 9) : 76 + (h % 15);
+      const style = [
+        `--c:${color}`,
+        `--ink:${ink(color)}`,
+        `--t:${Math.max(15, Math.round(b.pages / 19))}px`,
+        `--w:${width}%`,
+        `--x:${(h % 13) - 6}px`,
+        `--r:${((h % 9) - 4) * 0.12}deg`,
+      ].join(';');
+      return (
+        <li
+          class:list={['book', b.format, typefaces[h % 3]]}
+          style={style}
+          title={`${b.title}, ${b.author} · ${b.pages} pages · finished ${formatDate(b.finished)}`}
+        >
+          <span class="spine-title">{b.title}</span>
+          <span class="spine-author">{b.author.split(' ').at(-1)}</span>
+          <span class:list={['spine-mark', marks[(h >> 3) % 3]]} aria-hidden="true"></span>
+        </li>
+      );
+    })}
+  </ol>
+</section>

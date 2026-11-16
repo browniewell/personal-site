@@ -1,19 +1,34 @@
-# One entry per project. Order here = order on the site.
+# One entry per project. Completed projects show first, then the rest, each in the order here.
 #
 #   id:        short unique slug (no spaces)
 #   name:      project name
 #   summary:   one or two sentences
 #   learned:   what you learned (optional)
 #   built:     how it was built, shown as a tag (optional), e.g. "by hand", "with AI"
+#   status:    complete | in progress (default). Completed projects are listed first.
+#   image:     preview image under src/assets (optional), e.g. projects/lute-box.png
 #   featured:  true = also shown on the home page
 #   hidden:    true = keep it off the site for now
 #   links:     list of { label, url }. Leave empty if there's nothing public yet.
+
+- id: lute-box
+  name: Lute Box
+  summary: A one-page loot box game. Click to open a box, get a lute of some rarity, repeat.
+  learned: AI can generate a lot of code very quickly, but human review and testing are still essential.
+  built: AI-written, hand-reviewed
+  status: complete
+  image: projects/lute-box.png
+  featured: true
+  links:
+    - { label: Play, url: https://browniewell.github.io/lute-box/ }
+    - { label: GitHub, url: https://github.com/browniewell/lute-box }
 
 - id: lab-results-api
   name: Vet lab results API
   summary: A small REST API that takes in veterinary lab results, validates them, matches them to a patient, flags out-of-range values, and returns each patient's history. Node, TypeScript, Express, and Prisma, with all-fake patients.
   learned: How to design and write a REST API in TypeScript. I'd used plenty of APIs, but never written one.
   built: by hand
+  status: complete
   featured: true
   links:
     - { label: GitHub, url: https://github.com/browniewell/vet-lab-results-api }
@@ -29,21 +44,12 @@
   links:
     - { label: GitHub, url: https://github.com/browniewell/workout-tracker }
 
-- id: lute-box
-  name: Lute Box
-  summary: A one-page loot box game. Click to open a box, get a lute of some rarity, repeat. Very early days.
-  learned: AI can generate a lot of code very quickly, but human review and testing are still essential.
-  built: AI-written, hand-reviewed
-  featured: true
-  links:
-    - { label: Play, url: https://browniewell.github.io/lute-box/ }
-    - { label: GitHub, url: https://github.com/browniewell/lute-box }
-
 - id: personal-site
   name: ryanbrownewell.com
   summary: This site. A static site built with Astro and hosted on GitHub Pages, with no tracking.
   learned: How quickly AI can finish a simple project when someone technical is steering. It's a powerful tool, but it still needs careful stewardship.
   built: with AI
+  status: complete
   links:
     - { label: GitHub, url: https://github.com/browniewell/personal-site }
 

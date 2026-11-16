@@ -4,8 +4,9 @@ import { z } from 'astro/zod';
 import { parse } from 'yaml';
 
 // Keep the order entries appear in the YAML file.
+// Entries without an `id` get their position as one.
 const ordered = (text: string) =>
-  (parse(text) as Record<string, unknown>[]).map((entry, i) => ({ ...entry, order: i }));
+  (parse(text) as Record<string, unknown>[]).map((entry, i) => ({ id: String(i), ...entry, order: i }));
 
 // Blog posts: one markdown file per post in src/content/posts/
 const posts = defineCollection({
@@ -27,6 +28,8 @@ const projects = defineCollection({
     summary: z.string(),
     learned: z.string().optional(),
     built: z.string().optional(), // e.g. "by hand", "with AI"
+    status: z.enum(['complete', 'in progress']).default('in progress'),
+    image: z.string().optional(), // path under src/assets, e.g. projects/lute-box.png
     order: z.number(),
     featured: z.boolean().default(false),
     hidden: z.boolean().default(false),
@@ -46,4 +49,18 @@ const work = defineCollection({
   }),
 });
 
-export const collections = { posts, projects, work };
+// Books finished: src/data/reading.yaml (the book stack on the Now page)
+const reading = defineCollection({
+  loader: file('src/data/reading.yaml', { parser: ordered }),
+  schema: z.object({
+    title: z.string(),
+    author: z.string(),
+    pages: z.number().int().positive(),
+    finished: z.coerce.date(),
+    color: z.string().regex(/^#[0-9a-fA-F]{6}$/).optional(),
+    format: z.enum(['hardcover', 'paperback', 'ebook']).default('paperback'),
+    order: z.number(),
+  }),
+});
+
+export const collections = { posts, projects, work, reading };

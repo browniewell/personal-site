@@ -3,13 +3,14 @@ import Base from '../layouts/Base.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import Shelf, { type ShelfItem } from '../components/Shelf.astro';
 import { site, links } from '../config';
-import { getPosts, getProjects, formatDate } from '../lib/content';
+import { getPosts, getProjects, formatDate, withoutFinished } from '../lib/content';
 import { frontmatter as nowPage } from './now.md';
 
-const now: ShelfItem[] = nowPage.now ?? [];
+const now: ShelfItem[] = await withoutFinished(nowPage.now ?? []);
 
 const featured = (await getProjects()).filter((p) => p.data.featured).slice(0, 4);
-const recent = (await getPosts()).slice(0, 3);
+// Drafts stay off the home page even locally; preview them at /writing/.
+const recent = (await getPosts()).filter((p) => !p.data.draft).slice(0, 3);
 ---
 <Base>
   <div class="page-head">
