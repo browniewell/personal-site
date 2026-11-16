@@ -23,6 +23,16 @@
     - { label: Play, url: https://browniewell.github.io/lute-box/ }
     - { label: GitHub, url: https://github.com/browniewell/lute-box }
 
+- id: personal-site
+  name: ryanbrownewell.com
+  summary: This site. A static site built with Astro and hosted on GitHub Pages, with no tracking.
+  learned: How quickly AI can finish a simple project when someone technical is steering. It's a powerful tool, but it still needs careful stewardship.
+  built: with AI
+  status: complete
+  featured: true
+  links:
+    - { label: GitHub, url: https://github.com/browniewell/personal-site }
+
 - id: lab-results-api
   name: Vet lab results API
   summary: A small REST API that takes in veterinary lab results, validates them, matches them to a patient, flags out-of-range values, and returns each patient's history. Node, TypeScript, Express, and Prisma, with all-fake patients.
@@ -43,15 +53,6 @@
   featured: true
   links:
     - { label: GitHub, url: https://github.com/browniewell/workout-tracker }
-
-- id: personal-site
-  name: ryanbrownewell.com
-  summary: This site. A static site built with Astro and hosted on GitHub Pages, with no tracking.
-  learned: How quickly AI can finish a simple project when someone technical is steering. It's a powerful tool, but it still needs careful stewardship.
-  built: with AI
-  status: complete
-  links:
-    - { label: GitHub, url: https://github.com/browniewell/personal-site }
 
 # Private for now. Flip `hidden` to false (and add a summary and links) to show them.
 - id: job-search-tracker
