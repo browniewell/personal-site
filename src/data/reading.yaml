@@ -4,27 +4,26 @@
 #
 #   title, author
 #   pages:    page count (StoryGraph's edition); sets the spine thickness
-#   format:   hardcover | paperback | ebook (optional); hardcovers are taller with banded spines
+#   format:   hardcover | paperback | ebook (optional); hardcovers are a bit longer
 #   finished: date finished (YYYY-MM-DD)
-#   color:    spine color (optional); text color is picked automatically
 
-- { title: The Fifth Season, author: N.K. Jemisin, pages: 498, finished: 2026-01-06, format: paperback, color: '#325057' }
-- { title: The Strength of the Few, author: James Islington, pages: 725, finished: 2026-01-23, format: hardcover, color: '#545159' }
-- { title: The Alloy of Law, author: Brandon Sanderson, pages: 392, finished: 2026-01-28, format: paperback, color: '#ad8e74' }
-- { title: Ghostwater, author: Will Wight, pages: 305, finished: 2026-02-04, format: ebook, color: '#37636e' }
-- { title: The Obelisk Gate, author: N.K. Jemisin, pages: 433, finished: 2026-02-28, format: paperback, color: '#714354' }
-- { title: Playground, author: Richard Powers, pages: 381, finished: 2026-03-14, format: hardcover, color: '#0d3d79' }
-- { title: Underlord, author: Will Wight, pages: 400, finished: 2026-03-26, format: ebook, color: '#bc7845' }
-- { title: The Eye of the Bedlam Bride, author: Matt Dinniman, pages: 694, finished: 2026-04-21, format: ebook, color: '#a6714a' }
-- { title: The Stone Sky, author: N.K. Jemisin, pages: 445, finished: 2026-05-07, format: paperback, color: '#245f6e' }
-- { title: Shadows of Self, author: Brandon Sanderson, pages: 376, finished: 2026-05-28, format: paperback, color: '#25231f' }
-- { title: Uncrowned, author: Will Wight, pages: 336, finished: 2026-06-07, format: paperback, color: '#6e3fa3' }
-- { title: Operation Bounce House, author: Matt Dinniman, pages: 437, finished: 2026-06-20, format: hardcover, color: '#d9542b' }
-- { title: Wintersteel, author: Will Wight, pages: 522, finished: 2026-07-19, format: paperback, color: '#386f98' }
-- { title: The Bones Beneath My Skin, author: TJ Klune, pages: 388, finished: 2026-08-05, format: ebook, color: '#31336d' }
-- { title: The Bands of Mourning, author: Brandon Sanderson, pages: 514, finished: 2026-08-14, format: paperback, color: '#3e5b75' }
-- { title: This Inevitable Ruin, author: Matt Dinniman, pages: 881, finished: 2026-09-12, format: ebook, color: '#24a384' }
-- { title: In the Lives of Puppets, author: TJ Klune, pages: 420, finished: 2026-09-26, format: hardcover, color: '#40602a' }
-- { title: Between Two Fires, author: Christopher Buehlman, pages: 465, finished: 2026-10-19, format: ebook, color: '#aa683a' }
-- { title: Bloodline, author: Will Wight, pages: 376, finished: 2026-10-31, format: paperback, color: '#5a5650' }
-- { title: 'As You Wake, Break the Shell', author: Becky Chambers, pages: 470, finished: 2026-11-15, format: hardcover, color: '#140f67' }
+- { title: The Fifth Season, author: N.K. Jemisin, pages: 498, finished: 2026-01-06, format: paperback }
+- { title: The Strength of the Few, author: James Islington, pages: 725, finished: 2026-01-23, format: hardcover }
+- { title: The Alloy of Law, author: Brandon Sanderson, pages: 392, finished: 2026-01-28, format: paperback }
+- { title: Ghostwater, author: Will Wight, pages: 305, finished: 2026-02-04, format: ebook }
+- { title: The Obelisk Gate, author: N.K. Jemisin, pages: 433, finished: 2026-02-28, format: paperback }
+- { title: Playground, author: Richard Powers, pages: 381, finished: 2026-03-14, format: hardcover }
+- { title: Underlord, author: Will Wight, pages: 400, finished: 2026-03-26, format: ebook }
+- { title: The Eye of the Bedlam Bride, author: Matt Dinniman, pages: 694, finished: 2026-04-21, format: ebook }
+- { title: The Stone Sky, author: N.K. Jemisin, pages: 445, finished: 2026-05-07, format: paperback }
+- { title: Shadows of Self, author: Brandon Sanderson, pages: 376, finished: 2026-05-28, format: paperback }
+- { title: Uncrowned, author: Will Wight, pages: 336, finished: 2026-06-07, format: paperback }
+- { title: Operation Bounce House, author: Matt Dinniman, pages: 437, finished: 2026-06-20, format: hardcover }
+- { title: Wintersteel, author: Will Wight, pages: 522, finished: 2026-07-19, format: paperback }
+- { title: The Bones Beneath My Skin, author: TJ Klune, pages: 388, finished: 2026-08-05, format: ebook }
+- { title: The Bands of Mourning, author: Brandon Sanderson, pages: 514, finished: 2026-08-14, format: paperback }
+- { title: This Inevitable Ruin, author: Matt Dinniman, pages: 881, finished: 2026-09-12, format: ebook }
+- { title: In the Lives of Puppets, author: TJ Klune, pages: 420, finished: 2026-09-26, format: hardcover }
+- { title: Between Two Fires, author: Christopher Buehlman, pages: 465, finished: 2026-10-19, format: ebook }
+- { title: Bloodline, author: Will Wight, pages: 376, finished: 2026-10-31, format: paperback }
+- { title: 'As You Wake, Break the Shell', author: Becky Chambers, pages: 470, finished: 2026-11-15, format: hardcover }

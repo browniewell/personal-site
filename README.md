@@ -66,7 +66,7 @@ Edit the `now:` list and the `updated:` date at the top of `src/pages/now.md`. T
 
 To add a cover or logo, save the image in `src/assets/now/` or `src/assets/favorites/` and set `image: now/that-file.jpg` on the item. Any size works, because the site resizes images when it builds. Leave `image` off and the item shows as a plain text tag.
 
-When you finish a book, add a line to the bottom of `src/data/reading.yaml` with its title, author, page count and finish date (a spine `color` is optional). The stack on the Now page shows the most recent year in that file.
+When you finish a book, add a line to the bottom of `src/data/reading.yaml` with its title, author, page count and finish date. The stack on the Now page shows the most recent year in that file.
 
 ## Social links
 

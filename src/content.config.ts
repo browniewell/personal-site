@@ -57,7 +57,6 @@ const reading = defineCollection({
     author: z.string(),
     pages: z.number().int().positive(),
     finished: z.coerce.date(),
-    color: z.string().regex(/^#[0-9a-fA-F]{6}$/).optional(),
     format: z.enum(['hardcover', 'paperback', 'ebook']).default('paperback'),
     order: z.number(),
   }),

@@ -17,32 +17,35 @@ function hash(s: string) {
   for (const c of s) h = (h * 31 + c.charCodeAt(0)) | 0;
   return Math.abs(h);
 }
-// Gold foil on darker covers; a dark, stamped look on the few light ones.
-function foil(hex: string) {
+// Spine colors aren't the real covers, just a soft, cozy pile ("market").
+const palette = ['#f4a988', '#e8c07d', '#8cc5c0', '#9db4e0', '#c3a6d8']; // peach, butter, mint, powder blue, lilac
+// Dark ink on light spines, cream on dark ones.
+function ink(hex: string) {
   const [r, g, b] = [1, 3, 5].map((i) => {
     const c = parseInt(hex.slice(i, i + 2), 16) / 255;
     return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
   });
-  const lum = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-  return lum > 0.3 ? '#2b2216' : '#e2c27a';
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b > 0.3 ? '#2d2420' : '#fff7e6';
 }
-const fallback = ['#325057', '#714354', '#386f98', '#40602a', '#aa683a', '#31336d'];
 
 // Real-world sizes, in inches.
 const PAGE = 0.002;
 const trim = { hardcover: [9.1, 9.5], paperback: [7.9, 8.4], ebook: [7.9, 8.4] }; // spine length
 const covers = { hardcover: 0.2, paperback: 0.04, ebook: 0.04 };
 
+// Each book gets a palette color from its title, nudged so neighbors never match.
+const used: number[] = [];
 const rows = books.map((b, i) => {
   const h = hash(b.title);
   const [lo, hi] = trim[b.format];
-  const color = b.color ?? fallback[i % fallback.length];
+  let c = h % palette.length;
+  while (used.slice(-2).includes(c)) c = (c + 1) % palette.length;
+  used.push(c);
   return {
     ...b,
-    foil: foil(color),
+    color: palette[c],
+    ink: ink(palette[c]),
     n: books.length - i,
-    color,
-    stripe: Math.floor(h / 7919) % 4 === 0, // a dark band at one end, like a series design
     length: (lo + ((h % 100) / 100) * (hi - lo)).toFixed(2),
     thick: (b.pages * PAGE + covers[b.format]).toFixed(3),
     x: ((h % 13) - 6) / 40, // inches off-center
@@ -59,9 +62,9 @@ const rows = books.map((b, i) => {
       <div class="stack">
         {rows.map((b) => (
           <div
-            class:list={['book', b.format, { stripe: b.stripe }]}
+            class:list={['book', b.format]}
             data-n={b.n}
-            style={`--c:${b.color};--foil:${b.foil};--len:${b.length};--thick:${b.thick};--x:${b.x};--r:${b.r}deg`}
+            style={`--c:${b.color};--ink:${b.ink};--len:${b.length};--thick:${b.thick};--x:${b.x};--r:${b.r}deg`}
           >
             <span class="spine-title">{b.title}</span>
             <span class="spine-author">{b.author.split(' ').at(-1)}</span>
@@ -91,5 +94,6 @@ const rows = books.map((b, i) => {
       el.addEventListener('mouseleave', () => pair(el.dataset.n, false));
     });
   }
+
 
 </script>
