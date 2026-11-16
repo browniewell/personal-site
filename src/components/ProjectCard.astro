@@ -17,17 +17,17 @@ interface Props {
 const { project, showLearned = true } = Astro.props;
 const main = project.links[0];
 ---
-<article class:list={['card', { 'has-image': project.image }]}>
-  {/* Decorative image: the title link right below goes to the same place. */}
+<article class="card">
+  <span class:list={['status', { complete: project.status === 'complete' }]}>{project.status === 'complete' ? 'Complete' : 'In progress'}</span>
+  <h3>{main ? <a href={main.url}>{project.name}</a> : project.name}</h3>
+  <p>{project.summary}</p>
+  {showLearned && project.learned && <p class="learned"><span class="visually-hidden">What I learned: </span>{project.learned}</p>}
+  {/* Decorative image: the title link above goes to the same place. */}
   {project.image && (
     <a class="card-image" href={main?.url} tabindex="-1" aria-hidden="true">
       <Image src={asset(project.image)!} alt="" width={560} densities={[1, 2]} />
     </a>
   )}
-  <span class:list={['status', { complete: project.status === 'complete' }]}>{project.status === 'complete' ? 'Complete' : 'In progress'}</span>
-  <h3>{main ? <a href={main.url}>{project.name}</a> : project.name}</h3>
-  <p>{project.summary}</p>
-  {showLearned && project.learned && <p class="learned"><span class="visually-hidden">What I learned: </span>{project.learned}</p>}
   {(project.built || project.links.length > 0) && (
     <div class="meta">
       {project.built && <span class="tag">{project.built}</span>}
@@ -35,6 +35,3 @@ const main = project.links[0];
     </div>
   )}
 </article>
-<style>
-  .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-</style>
